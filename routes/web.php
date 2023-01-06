@@ -17,15 +17,11 @@ Route::get('/admin/users/user', [\App\Http\Controllers\UsersController::class, '
   Route::resource('users', UsersController::class);
    Route::resource('users', \App\Http\Controllers\UsersController::class);
 
-Route::prefix('posts')->group(function () {
-    Route::get('/', [\App\Http\Controllers\PostController::class, 'index'])->name('posts.index');
-    Route::get('/{id}', [\App\Http\Controllers\PostController::class, 'show'])->name('posts.show');
-});
 
 Route::middleware("auth:web")->group(function () {
     Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
-    Route::post('/posts/comment/{id}', [\App\Http\Controllers\PostController::class, 'comment'])->name('comment');
+   
 });
 
 Route::middleware("guest:web")->group(function () {
@@ -39,8 +35,6 @@ Route::middleware("guest:web")->group(function () {
     Route::post('/forgot_process', [\App\Http\Controllers\AuthController::class, 'forgot'])->name('forgot_process');
 });
 
-Route::get('/contacts', [\App\Http\Controllers\IndexController::class, 'showContactForm'])->name('contacts');
-Route::post('/contact_form_process', [\App\Http\Controllers\IndexController::class, 'contactForm'])->name('contact_form_process');
 
 
 

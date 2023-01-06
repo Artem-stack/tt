@@ -20,20 +20,16 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $posts = Post::query()
-            ->orderBy("created_at", "DESC")->limit(3)->get();
+        $users = User::orderBy("created_at", "DESC")->paginate(10);
 
-        return view('welcome', [
-            "posts" => $posts,
+        return view("posts.read", [
+            "users" => $users,
         ]);
     }
 
-    public function showContactForm()
-    {
-        return view("contact_form");
-    }
+   
 
-        public function showread()
+     public function showread()
     {
         $users = User::orderBy("created_at", "DESC")->paginate(10);
 
@@ -42,10 +38,5 @@ class IndexController extends Controller
         ]);
     }
 
-    public function contactForm(ContactFormRequest $request)
-    {
-        Mail::to("info@cutcode.ru")->send(new ContactForm($request->validated()));
-
-        return redirect(route("contacts"));
-    }
+   
 }
