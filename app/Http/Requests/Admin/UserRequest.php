@@ -25,16 +25,18 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-             "name" => ["required"],
+            "name" => ["required"],
             "email" => ["required"],
+            "head" => ["required"],
+            "admin_created_id" => ["required"],
+            "admin_updated_id" => ["required"],
+            "phone" => ["required"],
+            "position_id" => ["required"],
+            "image" => ["required"],
+            "salary" => ["required"],
+            "created_at" => ["required"],
 
-            "password" => [
-                Rule::when(
-                    request()->isMethod('post'),
-                    ["required", "confirmed"],
-                    ["sometimes", "confirmed"]
-                )
-            ],
+           
         ];
     }
 }

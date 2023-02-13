@@ -20,23 +20,10 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy("created_at", "DESC")->paginate(10);
-
-        return view("posts.read", [
-            "users" => $users,
-        ]);
+        
+      
     }
 
-   
-
-     public function showread()
-    {
-        $users = User::orderBy("created_at", "DESC")->paginate(10);
-
-        return view("posts.read", [
-            "users" => $users,
-        ]);
-    }
 
    
 }

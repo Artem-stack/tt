@@ -3,9 +3,11 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Illuminate\Validation\Rule;
 class PostFormRequest extends FormRequest
 {
+
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -24,10 +26,8 @@ class PostFormRequest extends FormRequest
     public function rules()
     {
         return [
-            "title" => ["required"],
-            "preview" => ["required"],
-            "description" => ["required"],
-            "thumbnail" => ["image"],
+            "image" => ["required"],
+            
         ];
     }
 }

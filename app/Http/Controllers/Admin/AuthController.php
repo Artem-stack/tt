@@ -18,15 +18,16 @@ class AuthController extends Controller
     {
         $data = $request->validate([
             "email" => ["required", "email", "string"],
+           
             "password" => ["required"]
         ]);
 
 
         if(auth("admin")->attempt($data)) {
-            return redirect(route("admin.admin_users.index"));
+            return redirect(route("admin.users.users"));
         }
 
-        return redirect(route("admin.login"))->withErrors(["email" => "Пользователь не найден, либо данные введены не правильно"]);
+        return redirect(route("admin.login"))->withErrors(["email" => "User not found or data entered incorrectly"]);
     }
 
     public function logout()

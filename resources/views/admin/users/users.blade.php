@@ -1,6 +1,6 @@
 @extends('layout.admin')
 
-@section('title', 'Администраторы')
+@section('title', 'test task')
 
 <link href="https://getbootstrap.com/docs/5.0/examples/checkout/form-validation.css" rel="stylesheet">
 <!-- CSS only -->
@@ -11,15 +11,20 @@
 @section('content')
 
 <div class="container mx-auto px-6 py-8">
-        <h3 class="text-gray-700 text-3xl font-medium">Пользователи</h3>
+        <h3 class="text-gray-700 text-3xl font-medium">Employees</h3>
     <a class="btn btn-primary" role="button" href="{{ route('admin.users.create') }}">Create user</a>
 
     <table class="table table-sm">
         <thead>
         <tr>
             <th scope="col">#</th>
+            <th scope="col">Photo</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Position</th>
+            <th scope="col">Date of employment</th>
             <th scope="col">Actions</th>
         </tr>
         </thead>
@@ -27,18 +32,38 @@
         @foreach($users as $user)
             <tr>
                 <th scope="row">{{ $user->id }}</th>
+                  <td>
+                    <div><img src="/image/{{ $user->image }}" width="50px"  height="50px" background-position= "center center";></div>
+                </td>
                 <td>
                     <div>{{ $user->name }}</div>
                 </td>
+                
                 <td>
                     <div>{{ $user->email }}</div>
                 </td>
                 <td>
+                    <div>{{ $user->salary }}</div>
+                </td>
+                <td>
+                    <div>{{ $user->phone }}</div>
+                </td>
+                 <td> 
+                    <div>{{ $user->position['name'] }}</div>
+                </td>
+                 <td>
+                    <div>{{ $user->created_at }}</div>
+                </td>
+                <td>
                     <form method="POST" action="{{ route("admin.users.destroy", $user->id) }}">
-                        <a type="button" class="btn btn-warning" href="{{ route("admin.users.edit", $user->id) }}">Edit</a>
+                       
+                        <a href="{{ route("admin.users.edit", $user->id) }}"><img src="/images/pencil.png" alt="Edit" width = "30" height = "30"> </a>
+                      
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-danger" type="submit">Delete</button>
+                         <td>
+                        <button><img src="/images/delete.png" alt="Delete" width = "30" height = "30"></button>
+                         </td>
                     </form>
                 </td>
             </tr>

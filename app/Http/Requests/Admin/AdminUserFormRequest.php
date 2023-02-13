@@ -31,6 +31,8 @@ class AdminUserFormRequest extends FormRequest
         return [
             "name" => ["required"],
             "email" => ["required"],
+            "phone" => ["required"],
+            "salary" => ["required"],
 
             "password" => [
                 Rule::when(

@@ -2,23 +2,40 @@
 
 namespace App\Models;
   
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Laravel\Passport\HasApiTokens;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
-
+      use HasFactory;
+   
+  
+ public function position()
+    {
+        return $this->belongsTo(Position::class);
+    }
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+    
+
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 
+        'email', 
+        'phone', 
+        'head', 
+        'salary', 
+        'image',
+        'position_id',
+        'admin_created_id',
+        'admin_updated_id',
+        'created_at',
     ];
 
     /**
@@ -29,5 +46,6 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token',
     ];
+
 }
 
