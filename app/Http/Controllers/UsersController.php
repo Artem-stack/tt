@@ -64,7 +64,7 @@ class UsersController extends Controller
             'name' => 'required|min:2|max:255',
             'email' => 'required|max:255',
             'phone' => 'required|regex:/^(\+38)([0-9\s\-\+\(\)]*)$/|min:10',
-            'head' => 'required|max:255',
+            'head' => 'required|max:255|exists:users,name',
             'position_id' => 'required',
             'admin_updated_id' => 'required',
             'admin_created_id' => 'required',
