@@ -1,18 +1,12 @@
-## Установка
 
-#### 1. Composer
+ Composer
 
 `` composer install ``
 
-#### 2. Npm
-
-`` npm install ``
-
-`` npm run dev ``
-
-#### 3. Laravel
 
 `` php artisan storage:link  ``
+
+ php artisan db:seed --class=GenreSeeder
 
 `` php artisan migrate --seed ``
 
